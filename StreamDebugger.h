@@ -23,6 +23,12 @@ class StreamDebugger
       _dump.write(ch);
       return _data.write(ch);
     }
+
+    virtual size_t write(const uint8_t *buffer, size_t size) override{
+    	_dump.write(buffer, size);
+    	return _data.write(buffer, size);
+    }
+
     virtual int read() {
       int ch = _data.read();
       if (ch != -1) { _dump.write(ch); }
